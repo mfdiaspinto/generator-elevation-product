@@ -1,0 +1,729 @@
+@import '../helpers/variables.less';
+//START: MySubscriptionCard
+.sub-card {
+    .sub-top-row {
+        .sub-header {
+            padding-left: 6px;
+            margin-top: 20px;
+
+            .sub-container {
+                margin-left: 5px;
+
+                .container-jasmin {
+                    font-size: 16pt;
+                    margin-left: 3px;
+                }
+
+                .card-name {
+                    font-weight: 600;
+                    font-size: 18pt;
+                    color: @pri-theme-color;
+                }
+
+                .card-duration {
+                    font-weight: 600;
+                    font-size: 16pt;
+                }
+
+                .sub-items {
+                    font-size: 12pt;
+                    max-width: 120px;
+
+                    p {
+                        padding-bottom: 5px;
+                        margin: 10px 0 0 0 !important;
+
+                        .plus-icon {
+                            font-size: 13pt;
+                            margin-top: 3px;
+                        }
+                    }
+
+                    p:first-child {
+                        border-bottom: solid 1px;
+                    }
+                }
+            }
+        }
+
+        .sub-details {
+            padding-left: 6px;
+            padding-right: 6px;
+            padding-bottom: 25px;
+
+            .additional-itens-title {
+                font-size: 12pt;
+                color: @gray-light;
+                border-bottom: 1px solid @gray-light;
+                margin: 20px 0 10px 0;
+                padding-bottom: 1px;
+            }
+
+            .additional-itens > div {
+                float: left;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                padding-top: 5px;
+            }
+
+            .additional-itens > div:nth-child(1) {
+                width: 60%;
+                font-size: 12pt;
+                color: @gray;
+            }
+
+            .additional-itens > div:nth-child(2) {
+                width: 20%;
+                font-size: 10pt;
+                color: @pri-theme-color;
+            }
+
+            .additional-itens > div:nth-child(3) {
+                width: 20%;
+                text-align: right;
+                color: @pri-theme-color;
+                font-weight: bold;
+            }
+
+            .loading {
+                margin-right: auto;
+                display: block;
+            }
+        }
+
+        .sub-info {
+            margin-top: 20px;
+            padding-left: 6px;
+
+            .info-label {
+                position: relative;
+            }
+
+            .info-text {
+                margin-top: 0px;
+            }
+        }
+    }
+
+    .sub-bottom-row-wrapper {
+        -moz-transition: height .5s;
+        -ms-transition: height .5s;
+        -o-transition: height .5s;
+        -webkit-transition: height .5s;
+        transition: height .5s;
+        height: 0;
+        overflow: hidden;
+
+        .sub-bottom-row {
+            .promocode-container {
+                padding-left: 6px;
+
+                .promocode-text {
+                    font-size: 13pt;
+                    font-weight: 500;
+                    display: inline;
+                }
+
+                .promocode-input-container {
+                    margin-top: 6px;
+                }
+
+                .promocode-btn-container {
+                    margin-top: 6px;
+                    padding-right: 6px;
+
+                    .promocode-button {
+                        min-width: 100%;
+                        height: 28px;
+
+                        .promocode-btn-text {
+                            font-size: 10pt;
+                        }
+                    }
+                }
+
+                .promocode-loading-container {
+                    .promocode-loading {
+                        margin-top: 8px;
+                    }
+                }
+            }
+
+            .cashout {
+                .cashout-values {
+                    display: table;
+                    margin-right: 12px;
+                    font-size: 12pt;
+
+                    &-discount {
+                        color: @identity-promo-code-color;
+                        display: table-row
+                    }
+
+                    &-total {
+                        font-size: 14pt;
+                        font-weight: 600;
+                        display: table-row;
+                    }
+
+                    .loading {
+                        margin-right: 6px;
+                        display: block;
+                    }
+                }
+
+                .cashout-text {
+                    display: table;
+                    margin-right: 20px;
+                    font-size: 12pt;
+
+                    .discount-text {
+                        color: @identity-promo-code-color;
+                        display: table-row;
+                    }
+
+                    .total-text {
+                        font-size: 14pt;
+                        font-weight: 600;
+                        display: table-row;
+                    }
+                }
+            }
+
+            .disclaimer-text {
+                font-size: 7pt;
+                padding-right: 12px;
+                color: @pri-field-label-color;
+            }
+
+            &-collapsed {
+                -webkit-animation-duration: .35s; /* Safari 4.0 - 8.0 */
+                animation-duration: .35s;
+                animation-timing-function: ease-out;
+                height: 0;
+            }
+
+            &-expanded {
+                -webkit-animation-duration: .35s; /* Safari 4.0 - 8.0 */
+                animation-timing-function: ease-out;
+                animation-duration: .35s;
+                height: auto;
+            }
+        }
+    }
+
+    .sub-footer {
+        padding: 6px !important;
+
+        .card-button {
+            max-width: 320px;
+            margin: 6px 6px 6px 0;
+            font-size: 12pt;
+        }
+
+        .link-card-button {
+            max-width: 320px;
+            margin-bottom: 2px;
+            margin-right: 6px;
+            font-size: 12pt;
+        }
+
+        .add-additional-item {
+            font-size: 18px;
+            margin: 6px 6px 6px 0;
+            line-height: 33px;
+
+            .add-additional-item-icon {
+                line-height: 33px;
+                margin-right: 5px;
+            }
+        }
+    }
+
+    .loading {
+        display: inline-block;
+        vertical-align: sub;
+        margin-right: 6px;
+    }
+}
+// END: MySubscriptionCard
+
+//START: MyCompanyCard
+.company-card {
+    .sub-top-row {
+        margin-left: 10px !important;
+    }
+
+    .company-sub-header {
+        .company-sub-container {
+            margin: 10px;
+
+            .company-image {
+                min-height: 40px !important;
+                max-height: 150px;
+                max-width: 100%;
+                display: block;
+                margin: auto;
+                border: none;
+            }
+        }
+    }
+
+    .company-details {
+        padding-left: 6px;
+        margin-top: 20px;
+
+        .company-text {
+            font-weight: 600;
+            display: inline;
+        }
+
+        .company-values {
+            font-weight: 400;
+            display: inline;
+            color: @shell-foreground-color;
+        }
+    }
+
+    .company-info {
+        margin-top: 10px;
+        position: relative;
+        height: 130px;
+
+        .company-info-inner {
+            position: absolute;
+            height: 47px;
+            bottom: 0;
+            right: 0;
+            left: 0;
+
+            .company-info-values {
+                display: table;
+                margin-right: 12px;
+                font-size: 13pt;
+                color: @pri-field-label-color;
+                min-width: 100px;
+
+                &-price {
+                    display: inline;
+                    display: table-row;
+                }
+            }
+
+            .company-info-text {
+                margin: 0;
+                display: table;
+                margin-right: 10px;
+                font-size: 13pt;
+                color: @pri-field-label-color;
+
+                .price-period {
+                    font-size: 8pt;
+                }
+            }
+        }
+    }
+
+    .sub-footer {
+        padding: 0 0 0 6px !important;
+
+        .legend-sidenote {
+            padding-left: 0 !important;
+            vertical-align: middle;
+            line-height: 42px;
+            color: @pri-field-label-color;
+
+            span {
+                font-size: 8pt;
+            }
+        }
+
+        &-content {
+            padding: 6px !important;
+        }
+
+        .loading {
+            display: inline-block;
+            margin-right: 12px;
+            margin-top: 12px;
+        }
+    }
+
+    .company-disclaimer-text {
+        font-size: 7pt;
+        padding-right: 12px;
+        color: @pri-field-label-color;
+    }
+}
+//END: MyCompanyCard
+
+//START: MyAvailSubCard
+.av-card {
+    .av-sub-top-row {
+        .av-sub-header {
+            margin-top: 20px;
+            padding-left: 16px;
+            margin-bottom: 20px;
+
+            .container-jasmin {
+                font-size: 16pt;
+                margin-left: 3px;
+            }
+
+            .card-name {
+                font-weight: 600;
+                font-size: 18pt;
+                color: @pri-theme-color;
+            }
+
+            .card-price {
+                font-weight: 600;
+                font-size: 16pt;
+            }
+
+            .card-duration {
+                font-weight: 600;
+                font-size: 16pt;
+            }
+        }
+
+        .av-sub-details {
+            padding-left: 6px;
+            padding-right: 6px;
+
+            .loading-form {
+                pointer-events: none;
+                cursor: default;
+                display: -webkit-box;
+            }
+
+            .updown-arrow {
+                font-size: 14px;
+                margin-left: 4px;
+            }
+
+            .sub-upgrade-expander-button {
+                margin-top: 10px;
+            }
+        }
+
+        .seeMore {
+            display: inline-block;
+        }
+    }
+
+    .av-purchase-form-wrapper {
+        -moz-transition: height .5s, opacity 1s;
+        -ms-transition: height .5s, opacity 1s;
+        -o-transition: height .5s, opacity 1s;
+        -webkit-transition: height .5s, opacity 1s;
+        transition: height .5s, opacity 1s;
+        height: 0;
+        overflow: hidden;
+
+        .av-purchase-form {
+            .av-bottom-row {
+                .av-promocode-container {
+                    padding-left: 6px;
+
+                    .promocode-text {
+                        font-size: 13pt;
+                        font-weight: 500;
+                        display: inline;
+                    }
+
+                    .promocode-input-container {
+                        margin-top: 6px;
+                    }
+
+                    .promocode-btn-container {
+                        margin-top: 6px;
+                        padding-right: 6px;
+
+                        .promocode-button {
+                            min-width: 100%;
+                            height: 28px;
+
+                            .promocode-button-text {
+                                font-size: 10pt;
+                            }
+                        }
+                    }
+
+                    .promocode-loading-container {
+                        .promocode-loading {
+                            margin-top: 8px;
+                        }
+                    }
+                }
+
+                .av-cashout-container {
+                    margin-top: 10px;
+
+                    .av-cashout-values {
+                        display: table;
+                        margin-right: 12px;
+                        font-size: 13pt;
+                        min-width: 100px;
+
+                        &-cashback {
+                            display: inline;
+                            display: table-row;
+                            color: @pri-field-label-color;
+                        }
+
+                        &-discount {
+                            color: @identity-promo-code-color;
+                            display: table-row
+                        }
+
+                        &-total {
+                            font-size: 16pt;
+                            font-weight: 600;
+                            display: table-row;
+                        }
+
+                        .loading {
+                            margin-right: 6px;
+                            margin-top: 1px;
+                        }
+                    }
+
+                    .av-cashout-text {
+                        display: table;
+                        margin-right: 10px;
+                        font-size: 13pt;
+                        color: @pri-field-label-color;
+
+                        .cashback-text {
+                            margin: 0;
+                        }
+
+                        .discount-text {
+                            color: @identity-promo-code-color;
+                            display: table-row;
+                        }
+
+                        .total-text {
+                            font-size: 16pt;
+                            font-weight: 600;
+                            display: table-row;
+                        }
+                    }
+                }
+
+                .av-disclaimer-text {
+                    font-size: 7pt;
+                    padding-right: 12px;
+                    color: @pri-field-label-color;
+                }
+            }
+
+            .av-card-footer {
+                padding: 0 0 0 6px !important;
+
+                .cashback-sidenote {
+                    padding-left: 0 !important;
+                    vertical-align: middle;
+                    line-height: 42px;
+                    color: @pri-field-label-color;
+
+                    span {
+                        font-size: 8pt;
+                    }
+                }
+
+                &-content {
+                    padding: 6px !important;
+                }
+
+                .loading {
+                    display: inline-block;
+                    margin-right: 12px;
+                    margin-top: 12px;
+                }
+            }
+        }
+    }
+}
+//END:  MyAvailSubCard
+.av-card-button {
+    max-width: 320px;
+    font-size: 12pt;
+    margin: 6px 6px 6px 0;
+    float: right;
+}
+
+.company-card-container {
+    margin: 0 !important;
+}
+
+.pending-subscription-payment {
+    background: @pri-payment-warning;
+}
+
+.pending-subscription-processing {
+    background: #78cd51;
+}
+
+.pending-subscription-footer {
+
+    .warning-container {
+        color: @pri-white;
+        padding: 8px;
+        display: flex;
+
+        .warn-icon-span {
+            margin-right: 5px;
+            font-size: 1.5em;
+            line-height: 125%;
+        }
+
+        .warn-text-div {
+            padding-bottom: 3px;
+        }
+    }
+
+    .cancel-button-container {
+        .cancel-button-link {
+            padding: 8px;
+            color: @pri-white;
+        }
+    }
+}
+
+.my-items-header {
+    margin-bottom: 0px !important;
+}
+//@media only screen (min-width:381px) and ( max-width: 991px) { //xs+sm size
+@media only screen and (max-width: 991px) { //xs+sm size
+    .sub-card .card-button {
+        min-width: 100% !important;
+    }
+
+    .av-card .av-purchase-form-wrapper .av-purchase-form .av-card-footer {
+        padding: 0px !important;
+    }
+
+    .av-card .av-purchase-form-wrapper .av-purchase-form .av-card-footer .cashback-sidenote {
+        padding-left: 6px !important;
+    }
+
+    .company-card .sub-footer {
+        padding-left: 0 !important;
+    }
+
+    .company-card .sub-footer .legend-sidenote {
+        padding-left: 6px !important;
+    }
+
+    .av-card-footer .loading {
+        text-align: center;
+        left: 50%;
+        transform: translateX(-50%);
+        float: left;
+    }
+
+    .sub-footer .loading {
+        text-align: center;
+        left: 50%;
+        transform: translateX(-50%);
+        float: left;
+    }
+
+    .sub-footer-content .loading {
+        text-align: center;
+        left: 50%;
+        transform: translateX(-50%);
+        float: left;
+    }
+
+    .promocode-loading-container .loading {
+        text-align: center;
+        left: 50%;
+        transform: translateX(-50%);
+        float: left;
+    }
+
+    .sub-footer .legend-sidenote {
+        line-height: 15px !important;
+    }
+
+    .av-card-footer .cashback-sidenote {
+        line-height: 15px !important;
+    }
+
+    .sub-card .link-card-button {
+        min-width: 100% !important;
+    }
+
+    .sub-bottom-row .promocode-button {
+        min-width: 100% !important;
+        height: 32px !important;
+    }
+
+    .av-card .av-sub-header {
+        margin-left: 6px;
+        padding-left: 0 !important;
+    }
+
+    .av-purchase-form .promocode-button {
+        min-width: 100% !important;
+        height: 32px !important;
+    }
+
+    .av-card-button {
+        margin-right: 0 !important;
+        min-width: 100% !important;
+    }
+
+    .company-card .company-info {
+        height: 50px !important;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .sub-top-row .info-text {
+        font-size: 12px !important;
+    }
+
+    .company-card .info-text {
+        font-size: 12px !important;
+    }
+
+    .company-card .company-info-values {
+        margin-right: 10px !important;
+        font-size: 11pt !important;
+    }
+
+    .company-card .company-info-text {
+        margin-right: 10px !important;
+        font-size: 11pt !important;
+    }
+
+    .av-card .av-cashout-values {
+        margin-right: 10px !important;
+        font-size: 11pt !important;
+    }
+
+    .av-card .av-cashout-text {
+        margin-right: 10px !important;
+        font-size: 11pt !important;
+    }
+
+    .sub-card .cashout-values {
+        margin-right: 10px !important;
+        font-size: 11pt !important;
+    }
+
+    .sub-card .cashout-text {
+        margin-right: 10px !important;
+        font-size: 11pt !important;
+    }
+
+    .my-items-header {
+        display: grid;
+        margin-bottom: 0px !important;
+    }
+}

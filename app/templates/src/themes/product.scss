@@ -1,0 +1,15 @@
+/*
+    This file must contain all variables that need to be overrided
+    on SCSS style files.
+*/
+
+
+// All colors must be an hexadecimal with format #RRGGBB (RED, GREEN, BLUE)
+// and no alpha channel.
+$pri-theme-color-darker: #145781 !default;
+$pri-theme-color-dark: #1271AC !default;
+$pri-theme-color:#00A4D3 !default;
+$pri-theme-color-light: #B6DCF3 !default;
+$pri-theme-color-lighter:#E2F1FA !default;
+
+$menu-logo-image: url('./Images/product_menu_logo.svg');

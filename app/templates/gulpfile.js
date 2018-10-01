@@ -1,234 +1,227 @@
-/* eslint-disable */
-var gulp = require('gulp'),
-  path = require('path'),
-  ngc = require('@angular/compiler-cli/src/main').main,
-  rollup = require('gulp-rollup'),
-  rename = require('gulp-rename'),
-  del = require('del'),
-  runSequence = require('run-sequence'),
-  inlineResources = require('./tools/gulp/inline-resources');
+var gulp = require('gulp');
+var gutil = require('gulp-util');
+var path = require('path');
+var del = require('del');
+var fs = require('fs');
+var runSequence = require('run-sequence');
+var through = require('through2');
+var chmod = require('gulp-chmod');
+var less = require('gulp-less');
+var merge = require('merge-stream');
+var themePrefix = require('./src/tools/gulp-theme-prefix');
+var copydir = require('copy-dir');
+
+const replaceInFiles = require('replace-in-files');
 
 const rootFolder = path.join(__dirname);
-const srcFolder = path.join(rootFolder, 'src');
-const tmpFolder = path.join(rootFolder, '.tmp');
-const buildFolder = path.join(rootFolder, 'build');
+const srcFolder = path.join(__dirname, 'src');
 const distFolder = path.join(rootFolder, 'dist');
+const nodeModulesFolder = path.join(rootFolder, 'node_modules');
+const assetsFolder = path.join(distFolder, 'assets');
 
-/**
- * 1. Delete /dist folder
- */
-gulp.task('clean:dist', function () {
+// Hack for tinyMce theme
+const replaceInFilesOptions = {
+    files: nodeModulesFolder + '/tinymce/themes/modern/theme.js',
+    from: /return fontFamily.replace/g,  // string or regex
+    to: "return ((typeof fontFamily === 'string' || fontFamily instanceof String) ? fontFamily : \"\").replace",
+    optionsForFiles: { // default
+        "ignore": [
+            //"**/node_modules/**"
+        ]
+    },
+    saveOldFile: false,
+    encoding: 'utf8',
+    onlyFindPathsWithoutReplace: false, // default
+    returnPaths: true, // default
+    returnCountOfMatchesByPaths: true // default
+};
+const toLowerInFilesOptions = {
+    files: nodeModulesFolder + '/tinymce/themes/modern/theme.js',
+    from: "(item.value.toLowerCase() === fontFamily.toLowerCase())", // string or regex
+    to: "(fontFamily != undefined && item.value.toLowerCase() === fontFamily.toLowerCase())",
+    optionsForFiles: { // default
+        "ignore": [
+            //"**/node_modules/**"
+        ]
+    },
+    saveOldFile: false,
+    encoding: 'utf8',
+    onlyFindPathsWithoutReplace: false, // default
+    returnPaths: true, // default
+    returnCountOfMatchesByPaths: true // default
+};
 
-  // Delete contents but not dist folder to avoid broken npm links
-  // when dist directory is removed while npm link references it.
-  return deleteFolders([distFolder + '/**', '!' + distFolder]);
+gulp.task('clean:i18n-assets', () => {
+    return deleteFolders(`${assetsFolder}/i18n`);
+})
+
+// copy the language assets from all @primavera modules (@primavera/{MODULE}/assets/i18n)
+gulp.task('copy:i18n-assets', () => {
+    let primaveraModulesPath = `${nodeModulesFolder}/@primavera`;
+    let dirs = fs.readdirSync(primaveraModulesPath);
+    let dirAssetsPath = [];
+
+    for (let index in dirs) {
+        let moduleFolder = dirs[index];
+        let assetsPath = `${nodeModulesFolder}/@primavera/${moduleFolder}/assets/i18n/**/*.lang.json`;
+        dirAssetsPath.push(assetsPath);
+    }
+
+    return gulp.src(dirAssetsPath)
+        .pipe(chmod(666))
+        .pipe(gulp.dest(`${assetsFolder}/i18n`));
 });
 
-/**
- * 2. Clone the /src folder into /.tmp. If an npm link inside /src has been made,
- *    then it's likely that a node_modules folder exists. Ignore this folder
- *    when copying to /.tmp.
- */
-gulp.task('copy:source', function () {
-  return gulp.src([`${srcFolder}/**/*`, `!${srcFolder}/node_modules`])
-    .pipe(gulp.dest(tmpFolder));
+// handle assets tasks
+gulp.task('copy:assets', runSequence('clean:i18n-assets', 'copy:i18n-assets'));
+
+// the login styles need same files on ./dist folder to work properly
+gulp.task('copy:assets_to_login', () => {
+
+    let loginStyle = gulp.src('./src/themes/corejs/corejs.login.css')
+        .pipe(gulp.dest('./dist'));
+
+    // copy product svg images
+    let productSvgImages = gulp.src('./src/themes/Images/*.svg')
+        .pipe(gulp.dest('./dist'));
+
+    // copy product jpg|png images
+    let productJpgPngImages = gulp.src('./src/themes/Images/*.{jpg,jpeg,png}')
+        .pipe(gulp.dest('./dist'));
+
+    // copy framework icons
+    let fwIconsStyle = gulp.src('./src/themes/corejs/core/fonts/*.*')
+        .pipe(gulp.dest('./dist/core/fonts'));
+
+    let fwIconsFont = gulp.src('./src/themes/corejs/core/fonts/fonts/*.*')
+        .pipe(gulp.dest('./dist'));
+
+    // copy fonts
+    let corejsFonts = gulp.src('./src/themes/corejs/fonts/*.*')
+        .pipe(gulp.dest('./dist'));
+
+    let corejsOpenSansFonts = gulp.src('./src/themes/corejs/core/fonts/open-sans/*.*')
+        .pipe(gulp.dest('./dist'));
+
+    return merge(loginStyle, productSvgImages, productJpgPngImages, fwIconsStyle, fwIconsFont, corejsFonts, corejsOpenSansFonts);
 });
 
-/**
- * 3. Inline template (.html) and style (.css) files into the the component .ts files.
- *    We do this on the /.tmp folder to avoid editing the original /src files
- */
-gulp.task('inline-resources', function () {
-  return Promise.resolve()
-    .then(() => inlineResources(tmpFolder));
+// delete previouse coreJS files
+gulp.task('clean:styles_corejs', () => {
+
+    return del([
+        `./src/themes/corejs/core`,
+        './src/themes/corejs/bootstrap-colorpicker',
+        './src/themes/corejs/fonts',
+        './src/themes/corejs/font-awesome',
+        './src/themes/corejs/images',
+        './src/themes/corejs/shell',
+        './src/themes/corejs/thirdparty',
+        './src/themes/corejs/app.dark.less',
+        './src/themes/corejs/app.less',
+        './src/themes/corejs/common.less',
+        './src/themes/corejs/*.css'
+    ]);
 });
 
 
-/**
- * 4. Run the Angular compiler, ngc, on the /.tmp folder. This will output all
- *    compiled modules to the /build folder.
- *
- *    As of Angular 5, ngc accepts an array and no longer returns a promise.
- */
-gulp.task('ngc', function () {
-  ngc([ '--project', `${tmpFolder}/tsconfig.es5.json` ]);
-  return Promise.resolve()
+// copy files from the module CoreJS to the src/themes folder
+// this is necessary to compile de less with the product variables
+gulp.task('copy:styles_corejs', ['clean:styles_corejs'], () => {
+
+    return gulp.src('./node_modules/@primavera/corejs/styles/**/*', { base: './node_modules/@primavera/corejs/styles' })
+        .pipe(chmod(666))
+        .pipe(gulp.dest('./src/themes/corejs'));
 });
 
-/**
- * 5. Run rollup inside the /build folder to generate our Flat ES module and place the
- *    generated file into the /dist folder
- */
-gulp.task('rollup:fesm', function () {
-  return gulp.src(`${buildFolder}/**/*.js`)
-  // transform the files here.
-    .pipe(rollup({
+// compile the coreJS less
+gulp.task('compile:corejs_less', ['copy:styles_corejs'], () => {
 
-      // Bundle's entry point
-      // See "input" in https://rollupjs.org/#core-functionality
-      input: `${buildFolder}/index.js`,
+    var white = gulp.src('./src/themes/corejs/corejs.white.less')
+        .pipe(less())
+        .pipe(themePrefix('pri-white-theme '))
+        .pipe(gulp.dest('./src/themes/corejs/'));
 
-      // Allow mixing of hypothetical and actual files. "Actual" files can be files
-      // accessed by Rollup or produced by plugins further down the chain.
-      // This prevents errors like: 'path/file' does not exist in the hypothetical file system
-      // when subdirectories are used in the `src` directory.
-      allowRealFiles: true,
+    var dark = gulp.src('./src/themes/corejs/corejs.dark.less')
+        .pipe(less())
+        .pipe(themePrefix('pri-dark-theme '))
+        .pipe(gulp.dest('./src/themes/corejs/'));
 
-      // A list of IDs of modules that should remain external to the bundle
-      // See "external" in https://rollupjs.org/#core-functionality
-      external: [
-        '@angular/core',
-        '@angular/common'
-      ],
+    var common = gulp.src('./src/themes/corejs/corejs.common.less')
+        .pipe(less())
+        .pipe(gulp.dest('./src/themes/corejs/'));
 
-      // Format of generated bundle
-      // See "format" in https://rollupjs.org/#core-functionality
-      format: 'es'
-    }))
-    .pipe(gulp.dest(distFolder));
+    let login = gulp.src('./src/themes/corejs/corejs.login.less')
+        .pipe(less())
+        .pipe(gulp.dest('./src/themes/corejs/'));
+
+    let loginDebug = gulp.src('./src/themes/corejs/corejs.login.debug.less')
+        .pipe(less())
+        .pipe(gulp.dest('./src/themes/corejs/'));
+
+    return merge(white, dark, common, login, loginDebug);
 });
 
-/**
- * 6. Run rollup inside the /build folder to generate our UMD module and place the
- *    generated file into the /dist folder
- */
-gulp.task('rollup:umd', function () {
-  return gulp.src(`${buildFolder}/**/*.js`)
-  // transform the files here.
-    .pipe(rollup({
-
-      // Bundle's entry point
-      // See "input" in https://rollupjs.org/#core-functionality
-      input: `${buildFolder}/index.js`,
-
-      // Allow mixing of hypothetical and actual files. "Actual" files can be files
-      // accessed by Rollup or produced by plugins further down the chain.
-      // This prevents errors like: 'path/file' does not exist in the hypothetical file system
-      // when subdirectories are used in the `src` directory.
-      allowRealFiles: true,
-
-      // A list of IDs of modules that should remain external to the bundle
-      // See "external" in https://rollupjs.org/#core-functionality
-      external: [
-        '@angular/core',
-        '@angular/common'
-      ],
-
-      // Format of generated bundle
-      // See "format" in https://rollupjs.org/#core-functionality
-      format: 'umd',
-
-      // Export mode to use
-      // See "exports" in https://rollupjs.org/#danger-zone
-      exports: 'named',
-
-      // The name to use for the module for UMD/IIFE bundles
-      // (required for bundles with exports)
-      // See "name" in https://rollupjs.org/#core-functionality
-      name: '<%= module %>',
-
-      // See "globals" in https://rollupjs.org/#core-functionality
-      globals: {
-        typescript: 'ts'
-      }
-
-    }))
-    .pipe(rename('<%= module %>.umd.js'))
-    .pipe(gulp.dest(distFolder));
+gulp.task('default', function () {
+    // place code for your default task here
 });
 
-/**
- * 7. Copy all the files from /build to /dist, except .js files. We ignore all .js from /build
- *    because with don't need individual modules anymore, just the Flat ES module generated
- *    on step 5.
- */
-gulp.task('copy:build', function () {
-  return gulp.src([`${buildFolder}/**/*`, `!${buildFolder}/**/*.js`])
-    .pipe(gulp.dest(distFolder));
+// run before the build
+gulp.task('prebuild', ['tinymceThemeHack', 'compile:corejs_less']);
+gulp.task('prebuild', ['tinymceThemeHackLowerCase', 'compile:corejs_less']);
+
+// run after the build
+gulp.task('postbuild', ['copy:assets', 'copy:assets_to_login']);
+
+// run before the debug
+//gulp.task('predebug', ['compile:corejs_less', 'copy:assets_to_login'] , function(){
+gulp.task('predebug', ['copy:styles_corejs', 'compile:corejs_less'], function () {
+    let projAssetsFolder = path.join(srcFolder, 'assets');
+
+    let primaveraModulesPath = `${nodeModulesFolder}/@primavera`;
+    let dirs = fs.readdirSync(primaveraModulesPath);
+    let dirAssetsPath = [];
+
+    for (let index in dirs) {
+        let moduleFolder = dirs[index];
+        let assetsPath = `${nodeModulesFolder}/@primavera/${moduleFolder}/assets/i18n/**/*.lang.json`;
+        let assetsPathDebugOnly = `${nodeModulesFolder}/@primavera/${moduleFolder}/i18n/**/*.lang.json`;
+
+        dirAssetsPath.push(assetsPath);
+        dirAssetsPath.push(assetsPathDebugOnly);
+    }
+
+    return gulp.src(dirAssetsPath)
+        .pipe(chmod(666))
+        .pipe(gulp.dest(`${projAssetsFolder}/i18n`));
 });
-
-/**
- * 8. Copy package.json from /src to /dist
- */
-gulp.task('copy:manifest', function () {
-  return gulp.src([`${srcFolder}/package.json`])
-    .pipe(gulp.dest(distFolder));
-});
-
-/**
- * 9. Copy README.md from / to /dist
- */
-gulp.task('copy:readme', function () {
-  return gulp.src([path.join(rootFolder, 'README.MD')])
-    .pipe(gulp.dest(distFolder));
-});
-
-/**
- * 10. Copy language resources from / to /dist
- */
-gulp.task('copy:languageresources', function () {
-  let dirnameParts = __dirname.split('\\');
-  let moduleName = dirnameParts[dirnameParts.length - 1];
-
-  return gulp.src(`${srcFolder}/i18n/**/*.lang.json`)
-    .pipe(gulp.dest(`${distFolder}/assets/i18n`));
-});
-
-/**
-/**
- * 11. Delete /.tmp folder
- */
-gulp.task('clean:tmp', function () {
-  return deleteFolders([tmpFolder]);
-});
-
-/**
- * 12. Delete /build folder
- */
-gulp.task('clean:build', function () {
-  return deleteFolders([buildFolder]);
-});
-
-gulp.task('compile', function () {
-  runSequence(
-    'clean:dist',
-    'copy:source',
-    'inline-resources',
-    'ngc',
-    'rollup:fesm',
-    'rollup:umd',
-    'copy:build',
-    'copy:manifest',
-    'copy:readme',
-    'copy:languageresources',    
-    'clean:build',
-    'clean:tmp',
-    function (err) {
-      if (err) {
-        console.log('ERROR:', err.message);
-        deleteFolders([distFolder, tmpFolder, buildFolder]);
-      } else {
-        console.log('Compilation finished succesfully');
-      }
-    });
-});
-
-/**
- * Watch for any change in the /src folder and compile files
- */
-gulp.task('watch', function () {
-  gulp.watch(`${srcFolder}/**/*`, ['compile']);
-});
-
-gulp.task('clean', ['clean:dist', 'clean:tmp', 'clean:build']);
-
-gulp.task('build', ['clean', 'compile']);
-gulp.task('build:watch', ['build', 'watch']);
-gulp.task('default', ['build:watch']);
 
 /**
  * Deletes the specified folder
  */
 function deleteFolders(folders) {
-  return del(folders);
+    return del(folders);
 }
+
+gulp.task('tinymceThemeHack', () => {
+
+    replaceInFiles(replaceInFilesOptions)
+        .then(({ changedFiles, countOfMatchesByPaths }) => {
+        })
+        .catch(error => {
+            console.error('Error occurred:', error);
+        });
+
+
+});
+
+gulp.task('tinymceThemeHackLowerCase', () => {
+
+
+    replaceInFiles(toLowerInFilesOptions)
+        .then(({ changedFiles, countOfMatchesByPaths }) => {
+        })
+        .catch(error => {
+            console.error('Error occurred:', error);
+        });
+});

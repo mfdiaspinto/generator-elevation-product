@@ -1,0 +1,31 @@
+﻿
+/*
+    This file must contain all variables and classes that need to be overrided
+    on LESS style files.
+*/
+
+// All colors must be an hexadecimal with format #RRGGBB (RED, GREEN, BLUE)
+// and no alpha channel.
+@pri-theme-color-darker: #145781;
+@pri-theme-color-dark: #1271AC;
+@pri-theme-color:#00A4D3;
+@pri-theme-color-light: #B6DCF3;
+@pri-theme-color-lighter:#E2F1FA;
+
+// Images
+// !! The image paths MUST NOT change !!
+
+// The product logo at shell top left
+// must be an SVG and square.
+@shell-menu-logo-image: url('../images/product_menu_logo.svg');
+
+// The product logo on login/organization selector page
+// must be and SVG and wider than taller.
+@login-logo-image: url('./product_login_logo.svg');
+
+// The product background image on login/organization selector page
+// must be an jpg|png with size 1920x1216.
+@login-background-image: url('./product_login_background.jpg');
+
+// The background image on the server error modal (500)
+@error-modal-background-image: url('../images/product_error_background.png');

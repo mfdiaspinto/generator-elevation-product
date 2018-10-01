@@ -1,0 +1,21 @@
+
+.animation-mixin(@name; @duration; @time-function : linear; @delay : 0s; @iteration-count : infinite; @direction : alternate) {
+	-webkit-animation:@name @duration @time-function @delay @iteration-count @direction;
+	-moz-animation:@name @duration @time-function @delay @iteration-count @direction;
+	-o-animation:@name @duration @time-function @delay @iteration-count @direction;
+	animation:@name @duration @time-function @delay @iteration-count @direction;
+}
+
+.transform-mixin (@param) {
+	-moz-transform: @param;
+    -ms-transform: @param;
+    -o-transform: @param;
+    -webkit-transform: @param;
+    transform: @param;
+}
+
+.text-overflow (@param){
+	-o-text-overflow: @param;
+	-ms-text-overflow: @param;
+	text-overflow: @param;
+}

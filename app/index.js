@@ -21,12 +21,8 @@ module.exports = class extends Generator {
 	writing() {
     this.fs.copyTpl(
       this.templatePath(''),
-      this.destinationPath(this.answers.module + ''),
-			{ module: this.answers.module,
-				author :  this.answers.author,
-        email :  this.answers.email, 
-        version: this.answers.version
-			} // user answer `title` used
+      this.destinationPath(this.answers.product + ''),
+			{ product: this.answers.product } // user answer `title` used
     );
 	}
 	

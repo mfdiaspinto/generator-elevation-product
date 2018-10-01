@@ -1,0 +1,230 @@
+<!doctype html>
+<html class="pri-white-theme">
+<head>
+  <meta charset="utf-8">
+  <title><%= product %></title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+</head>
+<body>
+
+<script type="application/json" id="appContextModel">
+    {
+    "productName": "<%= product %>",
+    "user": {
+    "id": "354ab012-56b0-468f-b71a-d8a9c5800685",
+    "name": "admin",
+    "displayName": "Administrator",
+    "email": "admin@admin.none",
+    "culture": "pt-PT",
+    "claims": null
+    },
+    "appTheme" : "",
+    "clientId" : "",
+    "subscriptionId" : "",
+    "token": "ew0KICAidHlwIjogIkpXVCIsDQogICJhbGciOiAiUlMyNTYiLA0KICAieDV0IjogImEzck1VZ01Gdjl0UGNsTGE2eUYzekFrZnF1RSIsDQogICJraWQiOiAiYTNyTVVnTUZ2OXRQY2xMYTZ5RjN6QWtmcXVFIg0KfQ.ew0KICAiaXNzIjogImh0dHBzOi8vZWxldmF0aW9uZnczaWR0c3J2LmF6dXJld2Vic2l0ZXMubmV0L2NvcmUiLA0KICAiYXVkIjogImh0dHBzOi8vZWxldmF0aW9uZnczaWR0c3J2LmF6dXJld2Vic2l0ZXMubmV0L2NvcmUvcmVzb3VyY2VzIiwNCiAgImV4cCI6IDE1MDc3NDM4ODEsDQogICJuYmYiOiAxNTA3NzI5NDgxLA0KICAiY2xpZW50X2lkIjogImphc21pbiIsDQogICJzY29wZSI6IFsNCiAgICAiYXBwbGljYXRpb24iLA0KICAgICJvcGVuaWQiLA0KICAgICJtdmMiDQogIF0sDQogICJzdWIiOiAiMzU0QUIwMTItNTZCMC00NjhGLUI3MUEtRDhBOUM1ODAwNjg1IiwNCiAgImF1dGhfdGltZSI6IDE1MDc3Mjk0ODEsDQogICJpZHAiOiAiaWRzcnYiLA0KICAicHJlZmVycmVkX3VzZXJuYW1lIjogImFkbWluIiwNCiAgImVtYWlsIjogImFkbWluQGFkbWluLm5vbmUiLA0KICAiZW1haWxfdmVyaWZpZWQiOiAiZmFsc2UiLA0KICAicGhvbmVfbnVtYmVyIjogIjk2ODc1MjM1NyIsDQogICJwaG9uZV9udW1iZXJfdmVyaWZpZWQiOiAiZmFsc2UiLA0KICAibmFtZSI6ICJhZG1pbiIsDQogICJnaXZlbl9uYW1lIjogImFkbWluIiwNCiAgImZhbWlseV9uYW1lIjogIiIsDQogICJwaWN0dXJlIjogImh0dHBzOi8vZWxldmF0aW9uZnczaWR0c3J2LmF6dXJld2Vic2l0ZXMubmV0L2FwaS91c2Vycy8zNTRhYjAxMi01NmIwLTQ2OGYtYjcxYS1kOGE5YzU4MDA2ODUvcGljdHVyZSIsDQogICJjdWx0dXJlIjogInB0LVBUIiwNCiAgInVzZXJuYW1lIjogImFkbWluIiwNCiAgImRpc3BsYXlfbmFtZSI6ICJBZG1pbmlzdHJhdG9yIiwNCiAgImp0aSI6ICI1NjQ3YWEyNTI2MWU5ZjYxOGJjYTQ1MGRjM2Y1NjZiMiIsDQogICJhbXIiOiBbDQogICAgInBhc3N3b3JkIg0KICBdDQp9.gma43d-96rnMO1agRSlii5UdCm0dyNyC73d6LKsC2ccJrmH9PAVleXvclqM3OPiYreWsmR0Ei_LgrP-K8f-Ik1_11RUQuDN1bD7ihfcO2YHL5iDiKw-qNSYdQDFF_o-PMuuo2RUSK9FMslZPFhhQdvwQDDSLU43fpouVnCwZfFhX7ZDNnccyQjR60f9W7FVgS41LAmGawBpvB0iAqXGHvAuEOBLC6l1lAv7o0C71zjLOyoYk5dIWIyg4YF-118GxnXbvxABux-OAIg-fPlU3RndFdB6M2eDfKFeK3lqrPGO25MrCH8hk4VAi2KrtfISfeNA5VS_ey30s63U_9txgng",
+    "appSettings" : {
+    "subscriptionUrl" : ""
+    }
+    }
+</script>
+  
+  <div id="wrapper" ng-cloak ng-class="{'menu-on': !shellState.menuIsCollapsed, 'menu-off': shellState.menuIsCollapsed}">
+    
+        <!-- Sidebar -->
+        <div id="menu-and-sidebar-wrapper" ng-controller="Shell.MenuController">
+          
+              <!-- Fixed Menu -->
+              <div class="fixed-menu" ng-class="{'fixed-menu-search-mode' : searchModeActive}">
+                  <div class="sidebar-search-icon" id="sidebar-search-icon" ng-click="activateTab('search'); searchGainedFocus = true;">
+                      <div>
+                          <span class="icon-search_b sidebar-icon"></span>
+                      </div>
+                  </div>
+                  <ul class="sidebar-items" ng-hide="searchModeActive">
+                      <li class="sidebar-item">
+                          <a tabindex="0" href="" id="fullmenu-icon" ng-click="activateTab('menu');" ng-class="{ 'active' : shellState.menuIcons.fullMenuSelected }">
+                              <div>
+                                  <div>
+                                      <span class="icon-menu_a sidebar-icon"></span>
+                                  </div>
+                              </div>
+                          </a>
+                      </li>
+          
+                      <li class="sidebar-item">
+                          <a tabindex="0" href="" id="drafts-icon" ng-click="activateTab('wip')" ng-class="{ 'active' : shellState.menuIcons.draftsSelected }">
+                              <div>
+                                  <div>
+                                      <span class="icon-draft_c sidebar-icon sidebar-draft-icon">
+                                      </span>
+                                  </div>
+                                  <div class="sidebar-draft-counter" ng-class="{'sidebar-draft-counter-active' : shellState.menuIcons.draftsSelected}">
+                                      {{totalDraftCounter.total}}
+                                  </div>
+                              </div>
+                          </a>
+                      </li>
+          
+                      <li class="sidebar-item">
+                          <a tabindex="0" href="" id="fullmenu-icon" ng-click="activateTab('quick');"
+                             ng-class="{ 'active' : shellState.menuIcons.quickMenuSelected }">
+                              <div>
+                                  <div>
+                                      <span class="icon-plus sidebar-icon sidebar-quick-icon"></span>
+                                  </div>
+                              </div>
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+          
+              <!-- Sidebar -->
+              <div id="sidebar-wrapper" ng-cloak ng-class="{'menu-on': !shellState.menuIsCollapsed, 'menu-off': shellState.menuIsCollapsed}">
+                  
+                  <shell-search active="searchModeActive" clean-search="cleanSearch" search-gained-focus="searchGainedFocus"></shell-search>
+                  <div class="mobile-menu-selector">
+                      <div class="mobile-menu-selector-button" ng-click="activateTab('menu')" ng-class="{ 'mobile-menu-selector-button-active' : shellState.menuIcons.fullMenuSelected }">
+                          <div>
+                              <div>
+                                  <span class="icon-menu_a mobile-sidebar-icon"></span>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="mobile-menu-selector-button" ng-click="activateTab('wip')" ng-class="{ 'mobile-menu-selector-button-active' : shellState.menuIcons.draftsSelected }">
+                          <div>
+                              <div>
+                                  <span class="icon-draft_c mobile-sidebar-draft-icon"></span>
+                              </div>
+                              <div class="mobile-sidebar-draft-counter"
+                                   ng-class="{'mobile-sidebar-draft-counter-active' : shellState.menuIcons.draftsSelected}">
+                                  {{totalDraftCounter.total}}
+                              </div>
+                          </div>
+                      </div>
+                      <div class="mobile-menu-selector-button" ng-click="activateTab('quick')" ng-class="{ 'mobile-menu-selector-button-active' : shellState.menuIcons.quickMenuSelected }">
+                          <div class="icon-plus mobile-sidebar-quick-icon"></div>
+                      </div>
+                  </div>
+                  <div id="main-menu" ng-hide="searchModeActive" ng-cloak>
+                      <shell-menu ng-show="menuActiveTab == 'menu'"></shell-menu>
+                      <shell-drafts class="sidebar-drafts" ng-show="menuActiveTab == 'wip'"></shell-drafts>
+                      <shell-menu-quick ng-show="menuActiveTab == 'quick'"></shell-menu-quick>
+                  </div>
+              </div>
+          </div>
+          
+          
+    
+        <div id="page-content-wrapper" ng-class="{'menu-on': !shellState.menuIsCollapsed, 'menu-off': shellState.menuIsCollapsed}">
+            <div class="content-header">
+                <header class="navbar" ng-class="{'menu-on': !shellState.menuIsCollapsed, 'menu-off': shellState.menuIsCollapsed}">
+                  <div ng-cloak>
+                    
+                        <div class="container header">
+                    
+                            <!-- start: Header Menu -->
+                            <div class="header-nav">
+                    
+                                <div class="pull-right" style="display:table">
+                                    <!-- start: User Dropdown -->
+                                    <div style="display:table-cell">
+                                        <div dropdown>
+                                            <div class="user-area">
+                                                <div class="action"
+                                                     ng-class="{'action-glow'  : states.contextDashboardButtonState === 'highlighted'}"
+                                                     stop-click-event ng-click="contextDashboardAction()">
+                                                    <div>
+                                                        <span ng-class="{'icon-left_i'  : states.contextDashboardButtonState === 'closed' || states.contextDashboardButtonState === 'highlighted',
+                                                                         'icon-right_j' : states.contextDashboardButtonState === 'open'}">
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="user-container" dropdown-toggle ng-click="userMenuAction()">
+                                                    <div class="picture-container">
+                                                        <div id="user-area-image">
+                                                            <img src='https://elevationfw3idtsrv.azurewebsites.net/api/users/354ab012-56b0-468f-b71a-d8a9c5800685/picture' title="@Model.User.Culture" ng-alt="{{ userName }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="user">
+                                                        <div class="user-name">Amin</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ul class="dropdown-menu pull-right user-dropdown-menu">
+                                                <li><a ng-click="signOut()" data-i18n="shell.header.RES_Shell_Header_User_Logout"></a></li>
+                    
+                                                <li class="divider"></li>
+                    
+                                                <li><a href="@UserProfilePageUrl" data-i18n="shell.header.RES_Shell_Header_User_Profile"></a></li>
+                                                <li><a href="@SubscriptionUsersPageUrl" data-i18n="shell.header.RES_Shell_Header_User_SubscriptionUsers"></a></li>
+                                                <li><a href="@SubscriptionServicesPageUrl" data-i18n="shell.header.RES_Shell_Header_User_SubscriptionServices"></a></li>
+                                                <li><a ng-click="openSupportRequestModal()" data-i18n="shell.header.RES_Shell_Header_User_SupportRequest"></a></li>
+                                                <li class="divider"></li>
+                    
+                                                <li class="dropdown-submenu dropdown-submenu-left">
+                                                    <a data-i18n="shell.header.RES_Shell_Header_User_Change_Theme"></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <a data-i18n="shell.header.RES_Shell_Header_User_Change_Theme_Regular" ng-class="{'checked': 'app.min.css' === selectedTheme}" ng-click="changeTheme('app.min.css')"></a>
+                                                        </li>
+                                                        <li>
+                                                            <a data-i18n="shell.header.RES_Shell_Header_User_Change_Theme_Dark" ng-class="{'checked': 'app.dark.min.css' === selectedTheme}" ng-click="changeTheme('app.dark.min.css')">Dark</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- end: User Dropdown -->
+                    
+                                </div>
+                    
+                                <div class="mobile-menu-toggle">
+                                    <div id="mobile-menu-toggle" ng-click="showMenu()">
+                                        <span class="icon-menu_a sidebar-icon"></span>
+                                    </div>
+                                </div>
+                    
+                                <open-panel-notifications></open-panel-notifications>
+                    
+                                <div class="help-trigger" pri-dropdown-menu pri-dropdown-menu-items="helpPageItems" pri-dropdown-menu-offset-left="-5px">
+                                    <div>?</div>
+                                </div>
+                    
+                                <div class="header-title">
+                                    <div>
+                                        <span ng-bind="headerTitle"></span>
+                                        <span class="header-canceled" ng-show="isDeletedEntity">Deleted</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end: Header Menu -->
+                    </div>
+                </header>
+            </div>
+    
+            <!-- Loading layer -->
+            <div ng-if="shellState.isLoadingState">
+                <div class="page-overlay"></div>
+            </div>
+    
+            <!-- Keep all page content within the page-content inset div! -->
+            <div class="page-content inset">
+              <div id="page-content-wrapper" class="container">
+                <!-- Keep all page content within the page-content inset div! -->
+                <div class="page-content inset">
+                    <div data-ui-view></div>
+                    <app-root>Loading...</app-root>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

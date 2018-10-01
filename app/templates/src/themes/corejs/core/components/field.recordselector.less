@@ -1,0 +1,69 @@
+@import '../helpers/variables.less';
+
+.pri-record-selector {
+    .left-container {
+        width: 50%;
+        float:left;
+
+        input {
+            width:calc(100% ~'-' 30px);
+            color:@pri-record-selector-input-color;
+            font-size:11pt;
+            line-height:24px;
+            background:transparent;
+
+            &:focus {
+                outline:none;
+                box-shadow:none;
+            }
+        }
+
+        .magnifier-icon {
+            float:left;
+            font-size:12pt;
+            margin:5px;
+            color:@pri-record-selector-icons-color;
+        }
+    }
+
+    .right-container {
+        width: 50%;
+        float:right;
+
+        .description {
+            width: calc(100% ~'-' 30px);
+            float:left;
+            text-align:right;
+            padding-right:10px;
+            font-size:9pt;
+            line-height:27px;    
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            color:@pri-record-selector-description-color;
+            cursor:text;
+        }
+
+        .list-icon {
+            float:right;
+            font-size:12pt;
+            margin:5px;
+            color:@pri-record-selector-icons-color;
+            cursor:pointer;
+        }
+    }
+
+    &.on-focus {
+        .left-container {
+            width: calc(100% ~'-' 30px);
+        }
+
+        .right-container {
+            width: 30px;
+
+            .description {
+                display:none;
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+  "RES_InvalidNumberOfCopies": "El número de copias no es válido.",
+  "RES_Printing_DocumentPrinted": "El documento actual ya se ha imprimido. ¿Desea continuar con la impresión de un duplicado?",
+  "RES_Printing_NotAllowPopup": "Como su navegador está configurado para no permitir ventanas emergentes, hay que confirmar esta acción. ¿Desea continuar?",
+  "RES_PrintingLayout_Config_Close": "Cerrar",
+  "RES_PrintingLayout_Config_Confirm": "Confirmar",
+  "RES_PrintingLayout_Config_Header": "Configuración de Impresión",
+  "RES_PrintingLayout_Config_Select": "Seleccionar",
+  "RES_PrintingLayout_Config_SubHeader": "Seleccione el esquema de impresión predefinido",
+  "RES_PrintingLayout_Select_Checkbox": "Definir como informe predefinido",
+  "RES_PrintingLayout_Select_Header": "Seleccionar Esquema de Impresión",
+  "RES_PrintingLayout_Select_Print": "Imprimir",
+  "RES_PrintingLayout_Select_Select": "Seleccionar"
+}

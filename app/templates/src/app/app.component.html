@@ -1,0 +1,33 @@
+<div id="page-content-wrapper" ng-class="{'menu-on': !shellState.menuIsCollapsed, 'menu-off': shellState.menuIsCollapsed}">
+
+    <navbar-component [countCompanies]="countCompanies"></navbar-component>
+    <sidebar-component></sidebar-component>
+
+    <!-- Loading layer -->
+    <div *ngIf="shellStateService.isLoadingState">
+        <div class="page-overlay"></div>
+    </div>
+
+     <div class="page-content inset" [ngClass]="{'showCompanies' : countCompanies > 1}">
+
+        <div id="page-content-wrapper" class="container">
+            <!-- Keep all page content within the page-content inset div! -->
+            <div class="page-content inset">
+
+                <div data-ui-view></div>
+                <div class="pri-editor-view" style="position: relative">
+                    <hotkeys-angularjs-events></hotkeys-angularjs-events>
+                    <div>
+                        <div class="row clearfix">
+                            <div class="col-xs-12 pri-editor-view-form-container">
+                                <router-outlet></router-outlet>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

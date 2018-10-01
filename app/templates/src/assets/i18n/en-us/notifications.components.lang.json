@@ -1,0 +1,18 @@
+{
+  "RES_ClientMail_Title": "Send Message",
+  "RES_ClientMail_Message": "Message",
+  "RES_ClientMail_CloseButtonCaption": "Cancel",
+  "RES_ClientMail_SendButtonCaption": "Send",  
+  "RES_ClientMail_Subject": "Subject",
+  "RES_ClientMail_To": "To",
+  "RES_Email_GoToDocument": "See your document",
+  "RES_Email_Here": "here",
+  "RES_Email_Validity": "(this link is valid only for 30 days)",
+  "RES_Email_AttachDocument": "Attach Document",
+  "RES_DefaultAttachmentName": "Document",
+  "RES_LBL_ClientMail_Link": "Share link",
+  "RES_LBL_ClientMail_LinkTooltip": "Defines a link for this document that you can share with your customer",
+  "RES_ClientMail_Clipboard_Tooltip": "Copy to clipboard",
+  "RES_LBL_ClientMail_SendPDFTooltip": "This option is not required since a link is sent for the file to be downloaded",
+  "RES_ClientMail_MessageSent": "Your message has been sent."
+}

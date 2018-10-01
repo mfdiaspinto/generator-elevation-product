@@ -1,0 +1,96 @@
+@import '../helpers/variables.less';
+
+.extension {
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    .div-tabs {
+        border-bottom: @shell-content-border;
+    }
+
+    .nav-tabs {
+        border-bottom: none;
+
+        > li {
+            margin-bottom: -8px;
+            display: inline-block;
+            float: none;
+            border-bottom: @shell-content-border;
+
+
+            > a {
+                background-color: transparent;
+                color: @pri-gray;
+                border: none;
+                margin-bottom: 0;
+                padding-top: 0;
+                float: left;
+                font-size: 11pt;
+
+                &:hover {
+                    color: @pri-theme-color;
+                }
+
+                &.required::after {
+                    content: "\e91c";
+                    font-family: 'icomoon' !important;
+                    speak: none;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-variant: normal;
+                    text-transform: none;
+                    line-height: 1;
+                    /* Better Font Rendering =========== */
+                    -webkit-font-smoothing: antialiased;
+                    -moz-osx-font-smoothing: grayscale;
+                    color: @pri-required-field-mark-color;
+                    margin-left: 3px;
+                    margin-top: 5px;
+                    font-size: 10pt;
+                    position: absolute;
+                }
+            }
+
+            &.active {
+                border-bottom: 3px solid @pri-theme-color;
+
+                > a {
+                    background-color: transparent;
+                    border: none;
+                    color: @pri-theme-color;
+                    font-weight: bold;
+                }
+            }
+
+            > span {
+                float: right;
+                padding-top: 3px;
+                padding-right: 15px;
+            }
+
+            &.dropdown > a > span {
+                vertical-align: middle;
+                color: @pri-theme-color;
+            }
+        }
+    }
+
+    ul.nav-tabs {
+        display: block;
+        white-space: nowrap;
+    }
+
+    .loading {
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        margin-top: 100px;
+        margin-bottom: 100px;
+        right: 50%;
+        z-index: 1000;
+
+        &:before, &:after {
+            background-color: @pri-theme-color;
+        }
+    }
+}

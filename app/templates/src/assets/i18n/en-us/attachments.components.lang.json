@@ -1,0 +1,12 @@
+{
+  "RES_ManageAttachments": "Manage attachments",
+  "RES_ManageAttachmentsCancel": "Cancel",
+  "RES_ManageAttachmentsConfirm": "Confirm",
+  "RES_ManageAttachmentsNoFiles": "No files to show.",
+  "RES_ManageAttachmentsMaxAttachments": "The maximum number of items has been reached.",
+  "RES_ManageAttachmentsClose": "Close",
+  "RES_ManageAttachmentsAttachFile": "Choose a file or drag it.",
+  "RES_ManageAttachmentsDragFiles" : "Drop file here.",
+  "RES_ManageAttachmentsErrorMaxAttachments": "The maximum number of items has been reached",
+  "RES_ManageAttachmentsErrorFileSizeTooBig": "The file is too big. Select a file with less than [MAX_IMAGE_SIZE]mb." 
+}

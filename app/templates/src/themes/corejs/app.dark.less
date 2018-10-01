@@ -1,0 +1,128 @@
+@import 'app.less'; 
+
+//@pri-theme-color:#0E95DA;
+
+@shell-background-color: #2c2b2b; //@pri-gray-darker;
+@shell-background-selected-color:#414141;
+@shell-background-disabled-color:#414141;
+
+@shell-background-color-secondary:#414141;
+
+@shell-foreground-color:@pri-white;
+@shell-foreground-selected-color:@pri-gray-lighter;
+@shell-foreground-disabled-color:#515151;
+
+@shell-foreground-secondary-color:@pri-gray;
+@shell-foreground-secondary-selected-color:@pri-gray-ligh;
+@shell-foreground-secondary-disabled-color:@pri-gray-ligh;
+
+@shell-content-border-color:#515151;
+//@shell-content-border:1px solid @shell-content-border-color;
+
+@shell-page-overlay-background:rgba(0,0,0,.5);
+
+// sidebar | menu
+@brand-menu-foreground:@pri-white;
+@brand-menu-background:#202020;
+
+@sidebar-search-background:#414141; //@pri-gray-dark;
+@sidebar-searchitem-bottom-line-border:none;
+@sidebar-menuitem-module-bottom-border:1px solid transparent;
+@sidebar-border-right:none;
+@sidebar-draftgroupitem-border-bottom:none;
+@sidebar-draft-counter-color:@brand-menu-foreground;
+@sidebar-main-menu-header-border:none;
+@sidebar-logo-border:none;
+
+// header
+@header-background:@brand-menu-background;
+@header-border-bottom:none;
+@header-option-separator-color: transparent;
+
+//fields
+@pri-field-select-background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTExIDc5LjE1ODMyNSwgMjAxNS8wOS8xMC0wMToxMDoyMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjk5MzYwRDM3QTgzMDExRTZBQzJBOEJEREM0RjY5ODlFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjk5MzYwRDM4QTgzMDExRTZBQzJBOEJEREM0RjY5ODlFIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OTkzNjBEMzVBODMwMTFFNkFDMkE4QkREQzRGNjk4OUUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OTkzNjBEMzZBODMwMTFFNkFDMkE4QkREQzRGNjk4OUUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7dqT/AAAAAjklEQVR42uzUSwqAIBAGYO0Crtx1/6MELWoTBIF3mWZKSUqdfOzqh3/j49uMKAFAtEwnGuejoMEOWFXhKGsYgVOe4MyIVTT1zCp7lzLTgsYuhaiPkaHdRgn6wI437R3IQYPYHXyLRrEQyKFJLAbGUBZLgSGUxTjQoRtcMSnsDUjtsattz52X/39YnV2AAQD26pCTBSFRgAAAAABJRU5ErkJggg==');
+@pri-field-border:@shell-content-border;
+@pri-field-background:@shell-background-color;
+@pri-field-background-disabled:#333;
+@pri-field-foreground:@shell-foreground-color;
+@pri-field-foreground-disabled:@shell-foreground-disabled-color;
+@pri-field-label-color:@pri-gray-ligh;
+@fieldset-disabled-form-control-background-color:@pri-field-background-disabled;
+@imageuploader-border:@pri-field-border;
+
+@pri-field-detailmenu-container-background:@grid-row-background;
+@pri-field-detailmenu-container-border-left:@grid-row-border-right;
+@pri-field-detailmenu-container-border:@grid-row-border-selected;
+
+@pri-field-options-border:@shell-content-border;
+@pri-field-options-background:@shell-background-color;
+@pri-field-options-line-border:none;
+@pri-field-options-line-hover-background:@shell-background-selected-color;
+@pri-field-options-line-foreground:@shell-foreground-color;
+@pri-field-options-line-foreground-disabled:@shell-foreground-disabled-color;
+@pri-field-segment-color:@pri-field-foreground;
+@pri-field-segment-background-color:@pri-field-background;
+@editor-subtotals-background:@pri-field-disabled-background-color;
+@editor-subtotals-color:@shell-foreground-color;
+@editor-subtotals-labelcolor:@shell-foreground-secondary-color;
+
+@pri-search-icon-color:#808080;
+@pri-expander-border:1px solid @shell-content-border-color;
+
+//grid
+@grid-border:1px solid #515151;
+@grid-row-border-bottom:1px solid #414141;
+
+// Lists
+@kendo-border:1px solid #515151;
+@kendo-columns-group-indicator-background:#2c2b2b;
+@kendo-header-header-item-border:1px solid #515151;
+@pri-kendo-column-total-background-color:#414141;
+@pri-kendo-column-balance-background-color:#18303d;
+@pri-expander-list-parameters-background-color: transparent;
+
+// Forms
+@pri-editor-view-heading:@shell-foreground-color;
+
+//buttons
+@pri-btn-default-background-color:@shell-background-color;
+//@pri-btn-default-color:@shell-foreground-color;
+@pri-btn-disabled-background-color:@shell-background-disabled-color;
+@pri-btn-disabled-border:1px solid @shell-background-disabled-color;
+@pri-btn-link-color:@shell-foreground-color;
+
+// Popup messages
+@popup-message-service-message-color:@shell-foreground-color;
+
+// Loading
+@pri-field-loading-color:@pri-white;
+
+// widgets
+@widget-grid-cell-conditions-one-color: #FF2323;
+@widget-grid-cell-conditions-two-color: #01c001;
+@widget-grid-cell-conditions-three-color: orange;
+@widget-grid-cell-conditions-four-color: yellow;
+@widget-full-kpi-fst-color: @pri-gray-lighter;
+@widget-full-kpi-snd-color: @pri-gray-ligh;
+
+// modal
+@pri-modal-footer-border:@shell-content-border;
+
+// Footer
+@fixed-footer-border:@shell-content-border;
+
+//image uploader
+@imageuploader-modal-background-color:@shell-background-color;
+@imageuploader-modal-image-placeholder-background-color:@shell-background-color-secondary;
+@imageuploader-modal-footer-border-top:@shell-content-border;
+@imageuploader-modal-footer-btn-link-color:@shell-foreground-color;
+
+// HelpPage
+@help-page-help-trigger-color-disabled: @pri-gray-dark;
+
+
+// Pri Image Picker (Modal)
+@pri-image-picker-modal-image-viewer-background-color: @pri-gray-darker;
+
+// color to snapshot text info
+@snapshot-color: rgba(255,255,255,0.4);

@@ -1,0 +1,227 @@
+@import '../helpers/variables.less';
+
+.pri-search-typeahead { 
+    .pri-typeahead-row {
+        padding: 5px 10px;
+
+        color: @pri-search-typeahead-row-color;
+
+        > div { 
+            font-size: 8pt;
+            line-height: 16px;
+
+            &:first-child {
+                font-size: 10pt;
+                color: @pri-search-typeahead-row-first-element-color;
+            }
+        }
+
+        &:hover, &-selected {
+            color: @pri-search-typeahead-row-color;
+        }
+    }
+}
+
+.pri-field-search-wrapper {
+    .pri-field-search {
+
+        .pri-field-search-content {
+
+            .code { 
+                span {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.pri-field-search-wrapper[disabled] {
+    .pri-field-search {
+        background-color: @pri-search-background-color-disabled;
+
+        .pri-field-search-content {
+            width: 100%;
+            padding-right:10px;
+
+            .code { 
+                input {
+                    display:none;
+                }
+
+                a {
+                    display:inline;
+                }
+
+                span {
+                    display: block;
+                }
+            }
+        }
+
+        .context-menu {
+            display:none;
+        }
+
+    }
+}
+
+.pri-field-search {
+    height: 26px;
+
+    .pri-field-search-content {
+        width:calc(100% ~'-' 15px);
+        float:left;
+
+        .code {
+            width:auto;
+            overflow:hidden;
+            padding:0 5px 0 10px;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+
+            input {
+                width:100%;
+                padding:0 !important;
+
+                &:focus {
+                    outline:none;
+                    box-shadow:none;
+                }
+            }
+
+            a {
+                display:none;
+                line-height:26px;
+                cursor:pointer;
+            }
+        }
+
+        .description {
+            max-width:50%;
+            float:right;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+            height:26px;
+            overflow:hidden;
+            font-size:8pt;
+            line-height:26px;
+
+            a {
+                color:@pri-search-description-color;
+                cursor:pointer;
+            }
+        }
+
+        .details {
+            float: right;
+            position: relative;
+            height:26px;
+            margin-left: 5px;
+            color: @pri-theme-color;
+            cursor: pointer;
+            right: -5px;
+
+            > div {
+                top: 50%;
+                position: relative;
+                transform: translateY(-50%);
+            }
+        }
+
+        .loading {
+            display:none;
+            float:right;
+
+            > div {
+                top:5px;
+                width:16px;
+                height:16px;   
+            }
+        }
+    }
+
+    .context-menu {
+        float:right;
+        width:15px;
+        padding:4px 0;
+        overflow:hidden;
+        color: @pri-gray;
+
+        > div {
+            width:20px;
+            cursor:pointer;
+        }
+    }
+
+    &.editing {
+        .pri-field-search-content{
+            .code {
+                width:100%;
+            }
+
+            .description {
+                display: none;
+            }
+        }
+    }
+
+    &.editing.loading {
+        .pri-field-search-content{
+            .code{
+                width:calc(100% ~'-' 20px);
+            }
+
+            .loading {
+                display:block;
+            }
+        }
+    }
+}
+ 
+fieldset[disabled] .pri-field-search {
+    .pri-field-search-content { 
+        .code {
+            padding-left: 0;
+        }
+    }
+}
+
+// SMALL SCREENS
+@media only screen and (min-width: 1px) and (max-width: 991px) {
+
+    .pri-field-search {
+        height: 32px;
+        .pri-field-search-content {
+            height: 32px;
+
+            .code {
+                padding-top:2px;
+                
+                input {
+                    height: 28px !important;
+                    line-height: 28px !important;
+                }
+            } 
+
+            .description {
+                line-height: 32px;
+                height: 32px;
+            }
+
+            .loading {
+                > div {
+                    top:8px;
+                }
+            }
+
+            .details {
+                height: 32px;
+            }
+        }
+        .context-menu{
+            padding: 7px 0;
+        }
+    }
+    
+}

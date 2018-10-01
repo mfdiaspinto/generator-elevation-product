@@ -1,2 +1,2 @@
-# elevation-module
+# elevation-product
 Build elevation modules

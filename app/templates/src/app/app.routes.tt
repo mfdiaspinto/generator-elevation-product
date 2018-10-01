@@ -1,0 +1,2 @@
+<#@ ProductModel3 processor="ProductModel3DirectiveProcessor" requires="fileName='..\..\..\..\Models\Models\ProductModel.pd3'"#>
+<#@ include file="v3\Presentation\AppRoute.tt" #>

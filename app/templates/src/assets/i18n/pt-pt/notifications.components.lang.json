@@ -1,0 +1,18 @@
+{
+  "RES_ClientMail_Clipboard_Tooltip": "Copiar para a área de transferência",
+  "RES_ClientMail_CloseButtonCaption": "Cancelar",
+  "RES_ClientMail_Message": "Mensagem",
+  "RES_ClientMail_MessageSent": "A sua mensagem foi enviada.",
+  "RES_ClientMail_SendButtonCaption": "Enviar",
+  "RES_ClientMail_Subject": "Assunto",
+  "RES_ClientMail_Title": "Enviar Mensagem",
+  "RES_ClientMail_To": "Para",
+  "RES_DefaultAttachmentName": "Documento",
+  "RES_Email_AttachDocument": "Anexar Documento",
+  "RES_Email_GoToDocument": "Ver o documento",
+  "RES_Email_Here": "aqui",
+  "RES_Email_Validity": "(este link só é válido durante 30 dias)",
+  "RES_LBL_ClientMail_Link": "Partilhar link",
+  "RES_LBL_ClientMail_LinkTooltip": "Define um link para este documento que pode partilhar com o seu cliente",
+  "RES_LBL_ClientMail_SendPDFTooltip": "Esta opção não é necessária porque é enviado um link para descarregar o ficheiro"
+}

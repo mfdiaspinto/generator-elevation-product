@@ -1,0 +1,73 @@
+@import '../helpers/variables.less';
+
+.pri-tree-item-reporting {
+	cursor: pointer;
+	height: 26px!important;
+    padding: 0 5px;
+	
+	&:hover{
+		color: @shell-foreground-selected-color;
+	}
+
+	&-selected {
+		background-color: @shell-background-selected-color !important;
+		color: @shell-foreground-selected-color;
+	}
+} 
+
+.pri-reporting-tree {
+	margin-top: 18px!important;
+}
+
+.pri-tree-expander-reporting{
+	span {
+
+		font-size:11pt;
+		color:@shell-foreground-color;
+
+		&:hover{
+			color: @shell-foreground-selected-color;
+		}
+	}
+}
+
+.pri-reporting-properties {
+	margin-top: 18px!important;
+
+	.pri-reporting-property-path {
+		border-bottom: @shell-content-border;
+		padding-bottom: 7px!important;
+		margin-left: -3px!important; 
+		text-align:right;
+	}
+}
+
+.pri-reporting {
+	> span {
+		font-size:10pt !important;
+	}
+}
+
+.pri-reporting-tabs {
+	> ul {
+		cursor:default;
+	}
+}
+
+.pri-tab-margins {
+	padding-bottom: 7.8px;
+}
+
+.pri-colorpicker {
+	.pri-colorpicker-color-chooser-btn {
+		padding-top: 3px; 
+		padding-bottom: 2px;
+		border-radius: 0;
+        border:none;
+        background-color:transparent !important;
+	}
+
+	label {
+		position:relative;
+	}
+}

@@ -1,73 +1,28 @@
-# <%= module %>
+# <%= product %>
 
-## Installation
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
-To install this library, run:
+## Development server
 
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-```bash
-$ npm install <%= module %> --save
-```
+## Code scaffolding
 
-## Consuming your library
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
 
-Once you have published your library to npm, you can import your library in any Angular application by running:
+## Build
 
-```bash
-$ npm install <%= module %>
-```
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-and then from your Angular `AppModule`:
+## Running unit tests
 
-```typescript
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-import { AppComponent } from './app.component';
+## Running end-to-end tests
 
-// Import your library
-import { SampleModule } from '# <%= module %>';
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Before running the tests make sure you are serving the app via `ng serve`.
 
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
+## Further help
 
-    // Specify your library as an import
-    LibraryModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-```
-
-Once your library is imported, you can use its <%= module %>, directives and pipes in your Angular application:
-
-```xml
-<!-- You can now use your library component in app.component.html -->
-<h1>
-  {{title}}
-</h1>
-<sampleComponent></sampleComponent>
-```
-
-## Development
-
-To generate all `*.js`, `*.d.ts` and `*.metadata.json` files:
-
-```bash
-$ npm run build
-```
-
-To lint all `*.ts` files:
-
-```bash
-$ npm run lint
-```
-
-## License
-
-MIT © [# <%= author %>](mailto:# <%= email %>)
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

@@ -1,0 +1,30 @@
+@import '../helpers/variables.less';
+
+context-dashboard.pri-context-view > .wrapper > .content > div {
+    height: 100%;
+    width: 100%;
+}
+
+.context-dashboard > .wrapper > .content {
+    overflow-y: initial;
+}
+
+.context-dashboard.pri-context-view > .wrapper,
+.pri-context-view.context-dashboard-open {
+    width: 410px;
+    height: auto;
+    padding-bottom: 10px;
+}
+
+.pri-context-view.context-dashboard-closed {
+    height: auto;
+    padding-bottom: 10px;
+    border: 0;
+}
+
+@media only screen and (min-width: 1px) and (max-width: 480px) {
+    .context-dashboard.pri-context-view > .wrapper,
+    .pri-context-view.context-dashboard-open {
+        width: 100%;
+    }
+}

@@ -1,0 +1,14 @@
+{
+  "RES_InvalidNumberOfCopies": "The number of copies is invalid.",
+  "RES_PrintingLayout_Config_Close": "Close",
+  "RES_PrintingLayout_Config_Confirm": "Confirm",
+  "RES_PrintingLayout_Config_Select": "Select",  
+  "RES_PrintingLayout_Config_Header": "Printing Settings",
+  "RES_PrintingLayout_Config_SubHeader": "Select the default printing layout",
+  "RES_PrintingLayout_Select_Checkbox": "Set as default report",
+  "RES_PrintingLayout_Select_Header": "Select Printing Layout",
+  "RES_PrintingLayout_Select_Print": "Print",
+  "RES_PrintingLayout_Select_Select": "Select",
+  "RES_Printing_NotAllowPopup": "Since your browser is configured to not allow pop-up windows, you need to confirm this action. Do you wish to proceed?",
+  "RES_Printing_DocumentPrinted" : "The current document has already been printed. Do you wish to proceed with duplicate print?"
+}
