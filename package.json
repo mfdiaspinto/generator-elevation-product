@@ -1,7 +1,7 @@
 {
-  "name": "generator-elevation-module",
+  "name": "generator-elevation-product",
   "version": "0.0.8",
-  "description": "Build Elevation Module",
+  "description": "Build Elevation Product",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,16 +24,15 @@
   "author": "Miguel Pinto",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mfdiaspinto/generator-elevation-module/issues"
+    "url": "https://github.com/mfdiaspinto/generator-elevation-product/issues"
   },
-  "homepage": "https://github.com/mfdiaspinto/generator-elevation-module#readme",
+  "homepage": "https://github.com/mfdiaspinto/generator-elevation-product#readme",
   "dependencies": {
     "decamelize": "^2.0.0",
     "uppercamelcase": "^3.0.0",
     "yeoman-generator": "^3.1.1"
   },
   "files": [
-    "app",
-    "component"
+    "app"
   ]
 }
