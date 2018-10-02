@@ -6,23 +6,14 @@ module.exports = class extends Generator {
 	constructor(args, opts) {
 		// Calling the super constructor is important so our generator is correctly set up
 		super(args, opts);
-
-		// Next, add your custom code
-	/*	this.helperMethod = function () {
-			console.log('won\'t be called automatically');
-		};
-		 this.argument('appname', { type: String, required: true });
-
-		// And you can then access it later; e.g.
-		this.log(this.options.appname);
-  */
  	}
 	
 	writing() {
     this.fs.copyTpl(
       this.templatePath(''),
       this.destinationPath(this.answers.product + ''),
-			{ product: this.answers.product } // user answer `title` used
+      { product: this.answers.product,
+        version: this.answers.version } // user answer `title` used
     );
 	}
 	
