@@ -7,9 +7,10 @@ import * as chart from '@primavera/corejs/ng/Chart';
 
 import { AttachmentsModule } from '@primavera/attachments';
 import { PrintingModule } from '@primavera/printing';
+import { QueryBuilderModule } from '@primavera/qbuilder';
+
 import { NotificationsModule } from '@primavera/notifications';
 import { ComponentsModule } from '@primavera/components';
-import { qbuilderModule } from '@primavera/qbuilder';
 import * as datetimepicker from '@primavera/corejs/ng/datetimepicker';
 import * as html2canvas from 'html2canvas';
 import * as jqueryhotkeys from 'jquery.hotkeys';
@@ -75,7 +76,11 @@ export class HybridUrlHandlingStrategy implements UrlHandlingStrategy {
     }
 
     if (!ignore) {
-      ignore = surl.indexOf("?list") > 0 || surl.indexOf("editaccessgroup") > 0 || surl.indexOf("createaccessgroup") > 0 || surl.indexOf("dashboards") > 0;
+      if (surl.indexOf("list?listname") > 0) {
+        ignore = false;
+      } else {
+          ignore = surl.indexOf("listv3?") > 0 || surl.indexOf("dashboards") > 0;
+      }
     }
 
     console.log('STATE: ' + surl, ignore);
@@ -88,23 +93,11 @@ export class HybridUrlHandlingStrategy implements UrlHandlingStrategy {
   merge(url: UrlTree, whole: UrlTree) { return url; }
 }
 
-// v2.0.0
-/*
-export function createConfig(): SignalRConfiguration {
-    const c = new SignalRConfiguration();
-    c.hubName = 'applicationHub';
-    //c.qs = { user: 'bob' };
-    //c.url = 'http://localhost:51913/';
-    c.logging = true;
-    c.withCredentials = true;
-    return c;
-}
-*/
-
 let configSources: string[] = [
   'notifications.components.lang',
   'attachments.components.lang',
   'printing.components.lang',
+  'querybuilder.components.lang',
   'ngcore.components.lang'
 ]
 
@@ -124,8 +117,8 @@ let i18nConfig: I18nConfig = {
     AttachmentsModule,
     NotificationsModule,
     PrintingModule,
+    QueryBuilderModule,
     ComponentsModule,
-    qbuilderModule,
     ReactiveFormsModule,
     PrimaveraCoreModule.forRoot(),
     PrimaveraI18nModule.forRoot(i18nConfig),
@@ -157,14 +150,7 @@ angular.module('angular2', [
   uibootstrap]);
 
 angular.module('angular2')
-  //.directive('dynamicFormComponent', upgradeAdapter.downgradeNg2Component(DynamicFormUpdateComponent))
-  //.directive('dynamicFormCreateComponent', upgradeAdapter.downgradeNg2Component(DynamicFormCreateComponent))
-  //.directive('entitydynamicFormComponent', upgradeAdapter.downgradeNg2Component(EntityDynamicFormComponent))
-  //.directive('entitydynamicFormCreateComponent', upgradeAdapter.downgradeNg2Component(EntityDynamicFormCreateComponent))
-  .directive('recordSelector', upgradeAdapter.downgradeNg2Component(RecordSelectorComponent))
   .directive('priEventComponent', upgradeAdapter.downgradeNg2Component(EventComponent));
-//.directive('dynamicFormActionsComponent', upgradeAdapter.downgradeNg2Component(DynamicFormActionsComponent));
-
 
 /* force lib import */
 
@@ -227,8 +213,8 @@ app.config(['$stateProvider', '$locationProvider', '$controllerProvider', '$comp
         parent: 'create',
         reloadOnSearch: false,
         url: '/identity/accessGroups/editaccessgroup?id',
-        template: `<div  class="pri-editor-view" style="position: relative">
-                        <div ng-cloak>
+        template: `<div class="pri-editor-view" style="position: relative">
+                        <div >
                             <div class="row clearfix">
                                 <div class="col-xs-12 pri-editor-view-form-container">
                                     <entitydynamic-form-component module="identity" service="accessgroups" operation="editaccessgroup"></dynamic-form-component>
@@ -375,7 +361,7 @@ app.run(['$templateCache', '$rootScope', '$state', '$stateParams', '$window', 's
       $window.location.href = $window.location.href + '/';
     }
 
-    //$state.transitionTo('home');
+    $state.transitionTo('start');
   }]);
 
 

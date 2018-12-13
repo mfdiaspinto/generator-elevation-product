@@ -11,7 +11,7 @@ module.exports = class extends Generator {
 	writing() {
     this.fs.copyTpl(
       this.templatePath(''),
-      this.destinationPath(this.answers.product + ''),
+      this.destinationPath('ClintApp'),
       { product: this.answers.product,
         version: this.answers.version } // user answer `title` used
     );

@@ -1,2 +1,4 @@
 # elevation-product
-Build elevation modules
+## Create elevation product (ClientApp)
+
+yo elevation-product
